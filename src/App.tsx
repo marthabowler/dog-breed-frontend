@@ -1,7 +1,10 @@
+import FetchPhotos from "./components/FetchPhotos";
 import { greet } from "./utils/greet";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return <>
+ <FetchPhotos />
+  </>
 }
 
 export default App;
