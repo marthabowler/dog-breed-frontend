@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import DogPhoto from "./DogPhoto";
+import { getBreed } from "../utils/getBreed";
 
 export default function FetchPhotos(): JSX.Element {
     const [dogURL1, setDogURL1] = useState<string>("");
@@ -13,11 +14,16 @@ export default function FetchPhotos(): JSX.Element {
     
     useEffect(() => {
         async function setPhotos(){
-        setDogURL1(await fetchRandomPhotos())
-        setDogURL2(await fetchRandomPhotos())
+        setDogURL1(await fetchRandomPhotos());
+        setDogURL2(await fetchRandomPhotos());
         }
-        setPhotos()
+        setPhotos();
     }, [])
+
+    const breed1 = getBreed(dogURL1);
+    const breed2 = getBreed(dogURL2);
+
+
 
     return (
     <>
