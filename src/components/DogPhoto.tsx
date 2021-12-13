@@ -1,4 +1,4 @@
 export default interface DogPhoto {
-    message: string;
-    status: string
+  message: string;
+  status: string;
 }
