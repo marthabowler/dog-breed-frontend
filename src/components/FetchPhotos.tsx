@@ -29,16 +29,24 @@ export default function FetchPhotos(): JSX.Element {
 
   const handleVoteAndChangeDog = async (breed: string) => {
     setPhotos();
-    await axios.put(`${apiBaseURL}vote/${breed}`)
+    await axios.put(`${apiBaseURL}vote/${breed}`);
   };
 
   return (
     <>
       <button>
-        <img src={dogURL1} alt={"#"} onClick={() => handleVoteAndChangeDog(breed1)} />
+        <img
+          src={dogURL1}
+          alt={"#"}
+          onClick={() => handleVoteAndChangeDog(breed1)}
+        />
       </button>
       <button>
-        <img src={dogURL2} alt={"#"} onClick={() => handleVoteAndChangeDog(breed2)} />
+        <img
+          src={dogURL2}
+          alt={"#"}
+          onClick={() => handleVoteAndChangeDog(breed2)}
+        />
       </button>
     </>
   );
