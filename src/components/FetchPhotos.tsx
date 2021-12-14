@@ -19,6 +19,10 @@ export default function FetchPhotos(): JSX.Element {
   }
 
   useEffect(() => {
+    async function setPhotos() {
+      setDogURL1(await fetchRandomPhotos());
+      setDogURL2(await fetchRandomPhotos());
+    }
     setPhotos();
   }, []);
 
