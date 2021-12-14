@@ -24,5 +24,4 @@ yarn-error.log*
 
 
 .env.local
-netlify.toml
 yarn.lock
