@@ -23,7 +23,11 @@ export default function FetchPhotos(): JSX.Element {
       setDogURL1(await fetchRandomPhotos());
       setDogURL2(await fetchRandomPhotos());
     }
+    async function firstLoad() {
+      await axios.get(`${apiBaseURL}`);
+    }
     setPhotos();
+    firstLoad();
   }, []);
 
   const breed1 = getBreed(dogURL1);
