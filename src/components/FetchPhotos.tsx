@@ -3,6 +3,8 @@ import DogPhoto from "./DogPhoto";
 import { getBreed } from "../utils/getBreed";
 import axios from "axios";
 
+const apiBaseURL = process.env.REACT_APP_API_BASE;
+
 export default function FetchPhotos(): JSX.Element {
   const [dogURL1, setDogURL1] = useState<string>("");
   const [dogURL2, setDogURL2] = useState<string>("");
@@ -19,17 +21,17 @@ export default function FetchPhotos(): JSX.Element {
   }
 
   useEffect(() => {
-    async function setPhotos() {
+    async function loadData() {
       setDogURL1(await fetchRandomPhotos());
       setDogURL2(await fetchRandomPhotos());
+      await axios.get(`${apiBaseURL}`);
     }
-    setPhotos();
+
+    loadData();
   }, []);
 
   const breed1 = getBreed(dogURL1);
   const breed2 = getBreed(dogURL2);
-
-  const apiBaseURL = process.env.REACT_APP_API_BASE;
 
   const handleVoteAndChangeDog = async (breed: string) => {
     setPhotos();
