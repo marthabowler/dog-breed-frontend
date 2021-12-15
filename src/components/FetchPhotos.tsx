@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import DogPhoto from "./DogPhoto";
 import { getBreed } from "../utils/getBreed";
 import axios from "axios";
@@ -20,15 +20,15 @@ export default function FetchPhotos(): JSX.Element {
     setDogURL2(await fetchRandomPhotos());
   }
 
-  const loadData = useCallback(async () => {
-    setDogURL1(await fetchRandomPhotos());
-    setDogURL2(await fetchRandomPhotos());
-    await axios.get(`${apiBaseURL}`);
-  }, []);
-
   useEffect(() => {
+    async function loadData() {
+      setDogURL1(await fetchRandomPhotos());
+      setDogURL2(await fetchRandomPhotos());
+      await axios.get(`${apiBaseURL}`);
+    }
+
     loadData();
-  }, [loadData]);
+  }, []);
 
   const breed1 = getBreed(dogURL1);
   const breed2 = getBreed(dogURL2);
@@ -40,13 +40,14 @@ export default function FetchPhotos(): JSX.Element {
 
   return (
     <div className="row fetch-photos">
+      <h3>Vote for your favourite of the two breeds:</h3>
       <div className="col">
         <img
           src={dogURL1}
           alt={"#"}
           onClick={() => handleVoteAndChangeDog(breed1)}
         />
-      </div>
+      </div>{" "}
       <div className="col">
         <img
           src={dogURL2}

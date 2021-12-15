@@ -23,42 +23,44 @@ export default function Leaderboard(): JSX.Element {
   }
 
   return (
-    <div className="row mt-5">
-      <div className="col">
-        <h1>🎉 Top 10 Doggos 🎉</h1>
-        <button
-          className="mt-2 btn btn-outline-warning"
-          onClick={getLeaderboard}
-        >
-          Refresh
-        </button>
-
-        <table className="table table-bordered h4 mt-5">
-          <thead>
-            <tr>
-              <th>Breed</th>
-              <th>Votes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {top10.map((element, id) => (
-              <tr key={id}>
-                <td>{element.breed}</td>
-                <td>{element.votes}</td>
+    <>
+      <div className="row">
+        <h1 className="mt-2">🎉 Top 10 Doggos 🎉</h1>
+        <div className="buttonDiv">
+          <button className="btn btn-outline-warning" onClick={getLeaderboard}>
+            Refresh
+          </button>
+        </div>
+      </div>
+      <div className="row mt-5">
+        <div className="col">
+          <table className="table table-bordered h4">
+            <thead>
+              <tr>
+                <th>Breed</th>
+                <th>Votes</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {top10.map((element, id) => (
+                <tr key={id}>
+                  <td>{element.breed}</td>
+                  <td>{element.votes}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div className="col topThree">
+          {top10.length === 10 && (
+            <TopThreeDogs
+              numberOneDog={top10[0].breed}
+              numberTwoDog={top10[1].breed}
+              numberThreeDog={top10[2].breed}
+            />
+          )}
+        </div>
       </div>
-      <div className="col topThree">
-        {top10.length === 10 && (
-          <TopThreeDogs
-            numberOneDog={top10[0].breed}
-            numberTwoDog={top10[1].breed}
-            numberThreeDog={top10[2].breed}
-          />
-        )}
-      </div>
-    </div>
+    </>
   );
 }
