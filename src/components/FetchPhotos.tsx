@@ -1,4 +1,10 @@
 import { useEffect, useState } from "react";
+import useSound from "use-sound";
+// declare module "*.mp3";
+import dogHowl from "./dogHowl.mp3";
+// import dogHowl from "./Dog Howling At Moon-SoundBible.com-1369876823.mp3"
+// import src_sounds_A4 from "./src_sounds_A4.wav";
+
 import DogPhoto from "./DogPhoto";
 import { getBreed } from "../utils/getBreed";
 import axios from "axios";
@@ -8,6 +14,7 @@ const apiBaseURL = process.env.REACT_APP_API_BASE;
 export default function FetchPhotos(): JSX.Element {
   const [dogURL1, setDogURL1] = useState<string>("");
   const [dogURL2, setDogURL2] = useState<string>("");
+  const [play] = useSound(dogHowl);
 
   async function fetchRandomPhotos() {
     const dogAPI = await fetch("https://dog.ceo/api/breeds/image/random");
@@ -35,6 +42,7 @@ export default function FetchPhotos(): JSX.Element {
 
   const handleVoteAndChangeDog = async (breed: string) => {
     setPhotos();
+    play();
     await axios.put(`${apiBaseURL}vote/${breed}`);
   };
 
