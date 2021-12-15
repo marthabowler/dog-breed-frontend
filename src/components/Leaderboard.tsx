@@ -20,7 +20,7 @@ export default function Leaderboard(): JSX.Element {
   }, []);
 
   return (
-    <>
+    <div className="row">
       <h2>Top 10 Doggos</h2>
       <table>
         <tr>
@@ -34,6 +34,6 @@ export default function Leaderboard(): JSX.Element {
           </tr>
         ))}
       </table>
-    </>
+    </div>
   );
 }
