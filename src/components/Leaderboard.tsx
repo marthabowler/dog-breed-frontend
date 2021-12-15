@@ -27,10 +27,7 @@ export default function Leaderboard(): JSX.Element {
   }
 
   return (
-
     <div className="row">
-
-    
       <h2>🎉 Top 10 Doggos 🎉</h2>
       <button onClick={getLeaderboard}>Refresh</button>
 
