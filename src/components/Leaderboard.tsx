@@ -13,11 +13,7 @@ export default function Leaderboard(): JSX.Element {
   const [top10, setTop10] = useState<DogType[]>([]);
 
   useEffect(() => {
-    async function fetchLeaderboard() {
-      const data = await axios.get(`${apiBaseURL}leaderboard`);
-      setTop10(data.data.data);
-    }
-    fetchLeaderboard();
+    getLeaderboard();
   }, []);
 
   async function getLeaderboard() {
