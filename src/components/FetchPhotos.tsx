@@ -39,21 +39,21 @@ export default function FetchPhotos(): JSX.Element {
   };
 
   return (
-    <>
-      <button>
+    <div className="row fetch-photos">
+      <div className="col">
         <img
           src={dogURL1}
           alt={"#"}
           onClick={() => handleVoteAndChangeDog(breed1)}
         />
-      </button>
-      <button>
+      </div>
+      <div className="col">
         <img
           src={dogURL2}
           alt={"#"}
           onClick={() => handleVoteAndChangeDog(breed2)}
         />
-      </button>
-    </>
+      </div>
+    </div>
   );
 }

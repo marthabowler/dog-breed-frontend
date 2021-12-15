@@ -1,0 +1,13 @@
+img {
+  /* max-width: 100%;
+  max-height: 100%; */
+  border-radius: 5%;
+  width: auto;
+  height: 300px;
+  display: block; /* remove extra space below image */
+}
+
+.fetch-photos {
+  margin: 10px;
+  height: 300px;
+}

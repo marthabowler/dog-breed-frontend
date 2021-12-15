@@ -4,8 +4,10 @@ import Leaderboard from "./components/Leaderboard";
 function App(): JSX.Element {
   return (
     <>
-      <FetchPhotos />
-      <Leaderboard />
+      <div className="container">
+        <FetchPhotos />
+        <Leaderboard />
+      </div>
     </>
   );
 }
