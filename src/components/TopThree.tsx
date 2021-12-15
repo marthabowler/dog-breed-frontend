@@ -37,31 +37,21 @@ export default function TopThreeDogs(props: {
   return (
     <>
       {" "}
-      <table>
-        <tbody>
-          <tr>
-            <img
-              src={url1}
-              alt="favourite dog breed"
-              onClick={() => fetchTopThreePhotos(props.numberOneDog, 0)}
-            />
-          </tr>
-          <tr>
-            <img
-              src={url2}
-              alt="2nd favourite dog breed"
-              onClick={() => fetchTopThreePhotos(props.numberTwoDog, 1)}
-            />
-          </tr>
-          <tr>
-            <img
-              src={url3}
-              alt="3rdfavourite dog breed"
-              onClick={() => fetchTopThreePhotos(props.numberThreeDog, 2)}
-            />
-          </tr>
-        </tbody>
-      </table>
+      <img
+        src={url1}
+        alt="favourite dog breed"
+        onClick={() => fetchTopThreePhotos(props.numberOneDog, 0)}
+      />
+      <img
+        src={url2}
+        alt="2nd favourite dog breed"
+        onClick={() => fetchTopThreePhotos(props.numberTwoDog, 1)}
+      />
+      <img
+        src={url3}
+        alt="3rdfavourite dog breed"
+        onClick={() => fetchTopThreePhotos(props.numberThreeDog, 2)}
+      />
     </>
   );
 }
