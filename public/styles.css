@@ -11,3 +11,8 @@ img {
   margin: 10px;
   height: 300px;
 }
+
+.topThree img {
+  height: 150px;
+  margin: 10px auto;
+}

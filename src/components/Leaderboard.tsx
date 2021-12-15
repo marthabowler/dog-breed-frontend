@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import TopThreeDogs from "./TopThree";
 
 interface DogType {
   breed: string;
@@ -14,7 +15,6 @@ export default function Leaderboard(): JSX.Element {
   useEffect(() => {
     async function fetchLeaderboard() {
       const data = await axios.get(`${apiBaseURL}leaderboard`);
-      // console.log(data)
       setTop10(data.data.data);
     }
     fetchLeaderboard();
@@ -27,26 +27,42 @@ export default function Leaderboard(): JSX.Element {
   }
 
   return (
-    <div className="row">
-      <h2>🎉 Top 10 Doggos 🎉</h2>
-      <button onClick={getLeaderboard}>Refresh</button>
+    <div className="row mt-5">
+      <div className="col">
+        <h1>🎉 Top 10 Doggos 🎉</h1>
+        <button
+          className="mt-2 btn btn-outline-warning"
+          onClick={getLeaderboard}
+        >
+          Refresh
+        </button>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Breed</th>
-            <th>Votes</th>
-          </tr>
-        </thead>
-        <tbody>
-          {top10.map((element, id) => (
-            <tr key={id}>
-              <td>{element.breed}</td>
-              <td>{element.votes}</td>
+        <table className="table table-bordered h4 mt-5">
+          <thead>
+            <tr>
+              <th>Breed</th>
+              <th>Votes</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {top10.map((element, id) => (
+              <tr key={id}>
+                <td>{element.breed}</td>
+                <td>{element.votes}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="col topThree">
+        {top10.length === 10 && (
+          <TopThreeDogs
+            numberOneDog={top10[0].breed}
+            numberTwoDog={top10[1].breed}
+            numberThreeDog={top10[2].breed}
+          />
+        )}
+      </div>
     </div>
   );
 }
