@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import DogPhoto from "./DogPhoto";
 import { getBreed } from "../utils/getBreed";
 import axios from "axios";
@@ -20,15 +20,15 @@ export default function FetchPhotos(): JSX.Element {
     setDogURL2(await fetchRandomPhotos());
   }
 
-  useEffect(() => {
-    async function loadData() {
-      setDogURL1(await fetchRandomPhotos());
-      setDogURL2(await fetchRandomPhotos());
-      await axios.get(`${apiBaseURL}`);
-    }
-
-    loadData();
+  const loadData = useCallback(async () => {
+    setDogURL1(await fetchRandomPhotos());
+    setDogURL2(await fetchRandomPhotos());
+    await axios.get(`${apiBaseURL}`);
   }, []);
+
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const breed1 = getBreed(dogURL1);
   const breed2 = getBreed(dogURL2);

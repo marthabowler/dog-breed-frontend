@@ -29,23 +29,6 @@ export default function TopThreeDogs(props: {
   }
 
   useEffect(() => {
-    async function fetchTopThreePhotos(breed: string, index: number) {
-      const dogAPI = await fetch(
-        `https://dog.ceo/api/breed/${breed.split("-").join("/")}/images/random`
-      );
-      const jsonBody: DogPhoto = await dogAPI.json();
-      switch (index) {
-        case 0:
-          setUrl1(jsonBody.message);
-          break;
-        case 1:
-          setUrl2(jsonBody.message);
-          break;
-        case 2:
-          setUrl3(jsonBody.message);
-          break;
-      }
-    }
     fetchTopThreePhotos(props.numberOneDog, 0);
     fetchTopThreePhotos(props.numberTwoDog, 1);
     fetchTopThreePhotos(props.numberThreeDog, 2);
