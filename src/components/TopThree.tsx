@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import DogPhoto from "./DogPhoto";
+import writeDogBreed from "../utils/writeDogName";
 
 export default function TopThreeDogs(props: {
   numberOneDog: string;
@@ -37,21 +38,36 @@ export default function TopThreeDogs(props: {
   return (
     <>
       {" "}
-      <img
-        src={url1}
-        alt="favourite dog breed"
-        onClick={() => fetchTopThreePhotos(props.numberOneDog, 0)}
-      />
-      <img
-        src={url2}
-        alt="2nd favourite dog breed"
-        onClick={() => fetchTopThreePhotos(props.numberTwoDog, 1)}
-      />
-      <img
-        src={url3}
-        alt="3rdfavourite dog breed"
-        onClick={() => fetchTopThreePhotos(props.numberThreeDog, 2)}
-      />
+      <figure>
+        <img
+          src={url1}
+          alt="favourite dog breed"
+          onClick={() => fetchTopThreePhotos(props.numberOneDog, 0)}
+        />
+        <figcaption className="text-center">
+          🥇{writeDogBreed(props.numberOneDog)}🥇
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src={url2}
+          alt="2nd favourite dog breed"
+          onClick={() => fetchTopThreePhotos(props.numberTwoDog, 1)}
+        />
+        <figcaption className="text-center">
+          🥈{writeDogBreed(props.numberTwoDog)}🥈
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src={url3}
+          alt="3rdfavourite dog breed"
+          onClick={() => fetchTopThreePhotos(props.numberThreeDog, 2)}
+        />
+        <figcaption className="text-center">
+          🥉{writeDogBreed(props.numberThreeDog)}🥉
+        </figcaption>
+      </figure>
     </>
   );
 }
