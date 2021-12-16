@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import useSound from "use-sound";
-// import writeDogBreed from "../utils/writeDogName";
+import writeDogBreed from "../utils/writeDogName";
 import dogHowl from "./dogHowl.mp3";
 
 import DogPhoto from "./DogPhoto";
@@ -54,7 +54,9 @@ export default function FetchPhotos(): JSX.Element {
             alt={"#"}
             onClick={() => handleVoteAndChangeDog(breed1)}
           />
-          <figcaption className="text-center">{breed1}</figcaption>
+          <figcaption className="text-center">
+            {breed1 && writeDogBreed(breed1)}
+          </figcaption>
         </figure>
       </div>{" "}
       <div className="col">
@@ -64,7 +66,9 @@ export default function FetchPhotos(): JSX.Element {
             alt={"#"}
             onClick={() => handleVoteAndChangeDog(breed2)}
           />
-          <figcaption className="text-center">{breed2}</figcaption>
+          <figcaption className="text-center">
+            {breed2 && writeDogBreed(breed2)}
+          </figcaption>
         </figure>
       </div>
     </div>
