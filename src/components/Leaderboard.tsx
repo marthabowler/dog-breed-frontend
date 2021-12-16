@@ -26,10 +26,8 @@ export default function Leaderboard(): JSX.Element {
   return (
     <>
       <div className="row mt-5">
-        <div className="col">
+        <div className="col" id="topTenTitle">
           <h1 className="mt-2">🎉 Top ten Doggos 🎉</h1>
-        </div>
-        <div className="col">
           <div className="buttonDiv">
             <button
               className="btn btn-warning w-75 mt-2"

@@ -33,7 +33,10 @@ img {
 }
 
 .buttonDiv {
-  width: 300px;
+  width: 200px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 12px;
 }
 
 .fetch-photos .col img {
@@ -50,4 +53,14 @@ h1 {
 
 header {
   padding: 20px;
+}
+
+#topTenTitle {
+  white-space: nowrap;
+}
+
+#topTenTitle h1 {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 12px;
 }
