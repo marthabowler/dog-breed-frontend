@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import useSound from "use-sound";
-// declare module "*.mp3";
+import writeDogBreed from "../utils/writeDogName";
 import dogHowl from "./dogHowl.mp3";
-// import dogHowl from "./Dog Howling At Moon-SoundBible.com-1369876823.mp3"
-// import src_sounds_A4 from "./src_sounds_A4.wav";
 
 import DogPhoto from "./DogPhoto";
 import { getBreed } from "../utils/getBreed";
@@ -50,18 +48,28 @@ export default function FetchPhotos(): JSX.Element {
     <div className="row fetch-photos">
       <h3>Vote for your favourite of the two breeds:</h3>
       <div className="col">
-        <img
-          src={dogURL1}
-          alt={"#"}
-          onClick={() => handleVoteAndChangeDog(breed1)}
-        />
+        <figure>
+          <img
+            src={dogURL1}
+            alt={"#"}
+            onClick={() => handleVoteAndChangeDog(breed1)}
+          />
+          <figcaption className="text-center">
+            {writeDogBreed(breed1)}
+          </figcaption>
+        </figure>
       </div>{" "}
       <div className="col">
-        <img
-          src={dogURL2}
-          alt={"#"}
-          onClick={() => handleVoteAndChangeDog(breed2)}
-        />
+        <figure>
+          <img
+            src={dogURL2}
+            alt={"#"}
+            onClick={() => handleVoteAndChangeDog(breed2)}
+          />
+          <figcaption className="text-center">
+            {writeDogBreed(breed2)}
+          </figcaption>
+        </figure>
       </div>
     </div>
   );
